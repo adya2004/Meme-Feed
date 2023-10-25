@@ -11,17 +11,17 @@ setup instruction:
 
 3.make migrations
 ``` bash
-python3 manage.py makemigrations
+ python3 manage.py makemigrations
 ```
 
 4.Apply database migrations
 ```bash
-python3 manage.py migrate
+ python3 manage.py migrate
 ```
 
 Usage:
 
 1.Run server
 ```bash
-python3 manage.py runserver
+ python3 manage.py runserver
 ```
