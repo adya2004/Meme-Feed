@@ -5,7 +5,8 @@ setup instruction:
 
 1. install requirements.txt
 2.Change into the project directory:
-```bash cd meme-feed```
+```bash
+ cd meme-feed```
 
 3.make migrations
 ```python3 manage.py makemigrations ```
