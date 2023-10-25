@@ -1,7 +1,7 @@
 # Meme-Feed
 A web application to edit and post memes using django
 
-setup instruction:
+##setup instruction:
 
 1. install requirements.txt
 2.Change into the project directory:
@@ -19,14 +19,14 @@ setup instruction:
  python3 manage.py migrate
 ```
 
-Usage:
+##Usage:
 
 1.Run server
 ```bash
  python3 manage.py runserver
 ```
 
-Features:
+##Features:
  1.Vast Meme Collection
  2.User-Generated Content
  3.Social Interaction
