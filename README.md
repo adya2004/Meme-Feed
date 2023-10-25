@@ -25,3 +25,12 @@ Usage:
 ```bash
  python3 manage.py runserver
 ```
+
+Features:
+ 1.Vast Meme Collection
+ 2.User-Generated Content
+ 3.Social Interaction
+ 4.User Profiles
+ 5.Discover Trends
+ 6.Accessibility
+
