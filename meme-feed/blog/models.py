@@ -15,8 +15,10 @@ class post(models.Model):
     # like_count = models.PositiveIntegerField(default=0)
 
     def __str__(self):
+        # A human-readable representation of the object
         return self.title
     
+    # Return the URL to view the detail of a specific post
     def get_absolute_url(self):
         return reverse('post-detail',kwargs = {'pk':self.pk} )
     

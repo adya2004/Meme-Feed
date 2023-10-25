@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from . import meme_temp as mt
 from django.http import JsonResponse
 
+#function based view for home page
 def home(request):
     context = {
         'posts': post.objects.all()
@@ -14,9 +15,11 @@ def home(request):
     return render(request, 'blog/home.html', context)
     #this will return http response in background as required
 
+#function based view for about page
 def about(request):
     return render(request, 'blog/about.html', {'title' : 'About'})
 
+#class based view for displaying posts
 class PostListView(ListView):
     model = post
     template_name = 'blog/home.html'
@@ -24,9 +27,11 @@ class PostListView(ListView):
     ordering = ['-date_posted']
     paginate_by = 3
 
+#class based view for displaying individual post in detail
 class PostDetailView(DetailView):
     model = post
 
+#class based view for creating posts
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = post
     fields = ['title', 'template_id', 'top_text', 'bottom_text',]
@@ -44,7 +49,8 @@ class PostCreateView(LoginRequiredMixin, CreateView):
             # Handle the case where meme generation failed
             form.add_error(None, "Meme generation failed. Please try again.")
             return self.form_invalid(form)
-    
+
+#class based view for updating posts    
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = post
     fields = ['title', 'template_id', 'top_text', 'bottom_text']
@@ -65,6 +71,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
             return True
         return False 
         
+#class based view for deleting posts
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = post
     success_url = '/'
@@ -74,7 +81,8 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user == post.author:
             return True
         return False
-    
+
+#class based view for displaying  user posts    
 class UserPostListView(ListView):
     model = post
     template_name = 'blog/user_posts.html'
@@ -87,6 +95,7 @@ class UserPostListView(ListView):
         return post.objects.filter(author=user).order_by('-date_posted')
 
 
+#this feature is incomplete and will be updated in future
 # def like_post(request, pk):
 #     post = get_object_or_404(post, pk=pk)
 #     if request.user not in post.like_set.all():
@@ -102,14 +111,7 @@ class UserPostListView(ListView):
 #     return JsonResponse({'liked': liked, 'like_count': post.like_count})
 
 
-# templates = mt.get_templates()
-
-# def meme_templates(request):
-#     context = {
-#         'meme_templates': templates
-#     }
-#     return render(request, 'blog/meme_templates.html', context)
-
+#class based view for displaying all meme templates
 class Meme_templates(ListView):
     template_name = 'blog/meme_templates.html'
     context_object_name = 'meme_templates'

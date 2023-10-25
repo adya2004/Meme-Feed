@@ -5,6 +5,8 @@ from .forms import UserRegisterationForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+
+#function based view for regesteration
 def register(request):
     if request.method == 'POST':
         form = UserRegisterationForm(request.POST)
@@ -17,6 +19,7 @@ def register(request):
         form = UserRegisterationForm()
     return render(request, 'users/register.html', {'form': form})
 
+#function based view for user profile which opens only if user is logged in
 @login_required
 def profile(request):
     if request.method == 'POST':

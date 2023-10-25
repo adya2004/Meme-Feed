@@ -22,12 +22,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('register/', user_views.register, name="register"),
-    path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
-    path('profile/', user_views.profile, name='profile'),
-    path('', include('blog.urls')),
+    path('admin/', admin.site.urls),    # URL for admin page
+    path('register/', user_views.register, name="register"),    # URL for user registeration
+    path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),   # URL for user login
+    path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),   # URL for user logout
+    path('profile/', user_views.profile, name='profile'),   # URL for user profile
+    path('', include('blog.urls')),  # Include URLs defined in the 'blog' app
 ]
 
 if settings.DEBUG:
